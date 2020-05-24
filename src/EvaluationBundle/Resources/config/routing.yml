@@ -2,9 +2,9 @@ materiel_homepage:
     path:     /
     defaults: { _controller: EvaluationBundle:Default:index }
 template_aff:
-    path:     /template
+    path:     /showb
     defaults: { _controller: EvaluationBundle:Evaluation:Template}
 templatefront_aff:
-    path:     /templatefront
+    path:     /show
     defaults: { _controller: EvaluationBundle:Evaluation:TemplateF}
 

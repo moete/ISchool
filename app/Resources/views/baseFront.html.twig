@@ -102,11 +102,11 @@
 
                         <li><a href="#"><div>Student</div></a>
                             <ul>
-                                <li><a href="{{ path('etudiant_submitreclamation') }}"><div>Reclamation</div></a></li>
-                                <li><a href="{{ path('etudaint_addsubject') }}"><div><i class="icon-line2-home"></i>Add A New Subject</div></a></li>
-                                <li><a href="{{ path('etudaint_forumlist') }}"><div><i class="icon-line2-home"></i>All subjects</div></a></li>
-                                <li><a href="{{ path('etudaint_getmyforum') }}"><div><i class="icon-building2"></i>My Subjects</div></a></li>
-                                <li><a href="{{ path('etudaint_markview') }}"><div><i class="icon-building2"></i>My Mark</div></a></li>
+                                <li><a href=""><div>Reclamation</div></a></li>
+                                <li><a href=""><div><i class="icon-line2-home"></i>Add A New Subject</div></a></li>
+                                <li><a href=""><div><i class="icon-line2-home"></i>All subjects</div></a></li>
+                                <li><a href=""><div><i class="icon-building2"></i>My Subjects</div></a></li>
+                                <li><a href=""><div><i class="icon-building2"></i>My Mark</div></a></li>
 
                             </ul>
                         </li>
@@ -114,32 +114,14 @@
                             <li><a href="#"><div>Teacher Space</div></a>
                                 <ul>
 
-                                    <li><a href="{{ path('updateLogin',{'id':app.user.id })}}"><div><i class="icon-line2-home"></i>Update Login</div></a></li>
-                                    <li><a href="{{ path('showTeacherDetailsF',{'id':app.user.id })}}"><div><i class="icon-line2-home"></i>Teacher Profile</div></a></li>
-                                    <li><a  href="{{ path('AffectMark') }}"><div><i class="icon-line2-home"></i>Affect Marks</div></a></li>
+                                    <li><a href=""><div><i class="icon-line2-home"></i>Update Login</div></a></li>
+                                    <li><a href=""><div><i class="icon-line2-home"></i>Teacher Profile</div></a></li>
+                                    <li><a  href=""><div><i class="icon-line2-home"></i>Affect Marks</div></a></li>
 
 
                                 </ul>
                             </li>
-                        <li><a href="#"><div>Parent Space</div></a>
-                            <ul>
-                                <li><a href=" {{ path('ajout_front') }} "><div><i class="icon-line2-home"></i>Inscription</div></a></li>
-                                <li><a href="{{ path('ajouter_reclamation') }}"><div><i class="icon-building2"></i>Reclamation</div></a></li>
-                                <li><a href="{{ path('etudaint_markview') }}"><div><i class="icon-building2"></i>My Child</div></a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><div>School Life</div></a>
-                            <ul>
-                                <li><a href="{{ path('afficherClubFront') }}"><div><i class="fas fa-users"></i>Clubs</div></a></li>
-                                <li><a href="{{ path('afficherEventFront') }}"><div><i class="far fa-calendar-alt"></i>Events</div></a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><div>Adminstration Space</div></a>
-                            <ul>
-                        <li><a href="{{ path('admin_ScheduleFront') }}"><div>School Schedule</div></a></li>
-                        <li><a href="{{ path('admin_AddReclamation') }}"><div><i class="far fa-calendar-alt"></i>Reclamation </div></a></li>
-                            </ul>
-                        </li>
+
 {% endif %}
                     </ul>
 
@@ -149,19 +131,15 @@
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <a> {{ app.user.username }} &nbsp;&nbsp;&nbsp;</a>
 
-                            <a href="{{ path('back') }}"   class="button button-rounded button-white button-light button-small m-0">Back</a>
-                            <a href="{{ path('fos_user_security_logout') }}"   class="button button-rounded button-white button-light button-small m-0">LOGOUT</a>
+                            <a href=""   class="button button-rounded button-white button-light button-small m-0">Back</a>
+                            <a href=""   class="button button-rounded button-white button-light button-small m-0">LOGOUT</a>
                         {% elseif  is_granted('ROLE_ADMIN') %}
-                            <a> {{ app.user.username }} &nbsp;&nbsp;&nbsp;</a>
+                            <a> &nbsp;&nbsp;&nbsp;</a>
 
-                            <a href="{{ path('back') }}"   class="button button-rounded button-white button-light button-small m-0">Back</a>
-                            <a href="{{ path('fos_user_security_logout') }}"   class="button button-rounded button-white button-light button-small m-0">LOGOUT</a>
+                            <a href=""   class="button button-rounded button-white button-light button-small m-0">Back</a>
+                            <a href=""   class="button button-rounded button-white button-light button-small m-0">LOGOUT</a>
                         {% elseif  is_granted('ROLE_USER') %}
-                            <a> {{ app.user.username }} &nbsp;&nbsp;&nbsp;</a>
-                            <a href="{{ path('fos_user_security_logout') }}"   class="button button-rounded button-white button-light button-small m-0">LOGOUT</a>
-                            {% else %}
-                            <a href="{{ path('fos_user_security_login') }}"   class="button button-rounded button-white button-light button-small m-0">LOGIN</a>
-                        {% endif %}
+                            {% endif %}
 
                     </div>
 
@@ -181,8 +159,8 @@
         </div>
 <br>
 {% block sonia %}
-        {{ render(controller('SoniaBundle:Notification:display')) }}
-        {{ notifications_assets() }}
+
+
         <script>
             /**
              * After calling notifications_assets() "pusher" is now available
@@ -629,7 +607,7 @@
                     <a href="#" class="button button-white button-light button-rounded t500 m-0">Apply Now</a>
 
                 {% else %}
-                    <a href="{{ path('etudiant_inscrit') }}" class="button button-white button-light button-rounded t500 m-0">Apply Now</a>
+                    <a href="" class="button button-white button-light button-rounded t500 m-0">Apply Now</a>
                 {% endif %}
             </div>
 
@@ -674,7 +652,7 @@
                             <a class="link-hover-style-1"  data-hash data-hash-offset="95" href="#news">Admission</a>
                         </li>
                         <li class="mb-1">
-                            <a class="link-hover-style-1"  data-hash data-hash-offset="95" href="{{ path('admin_AddReclamation') }}">Reclamation</a>
+                            <a class="link-hover-style-1"  data-hash data-hash-offset="95" href="">Reclamation</a>
                         </li>
                     </ul>
                 </div>
