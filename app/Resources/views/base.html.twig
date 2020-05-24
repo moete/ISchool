@@ -49,7 +49,7 @@
     <div class="navbar navbar-expand-md header-menu-one bg-light">
         <div class="nav-bar-header-one">
             <div class="header-logo">
-                <a href="{{ path('front') }}">
+                <a href="">
                     <img src="{{ asset('img/LogoPrinc.png') }}" alt="logo" width="155px" height="40px">
                 </a>
             </div>
@@ -85,18 +85,10 @@
                     <a class="navbar-nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                        aria-expanded="false">
                         <div class="admin-title">
-                            {% if is_granted('ROLE_SUPER_ADMIN') %}
                             <h5 class="item-title"></h5>
                                 <span>SuperAdmin</span>
 
-                                {% elseif  is_granted('ROLE_ADMIN')%}
-                                    <h5 class="item-title"></h5>
-                                    <div class="item-title1">Admin</div>
 
-                            {% else %}
-                            <h5 class="item-title">Aziz Arfaoui</h5>
-                            <span>Admin</span>
-                            {% endif %}
                         </div>
                         <div class="admin-img">
                             <img src="{{ asset('fonts/man.png') }}" width="40px" alt="Admin">
@@ -106,21 +98,20 @@
                         <div class="item-header">
 
                             <h6 class="item-title"></h6>
-                            {% else %}
+
                                 <h6 class="item-title">Aziz Arfaoui </h6>
-                            {% endif %}
                         </div>
                         <div class="item-content">
                             <ul class="settings-list">
                                 <li><a href="#"><i class="flaticon-user"></i>My Profile</a></li>
                                 <li><a href="#"><i class="flaticon-list"></i>Task</a></li>
                                 <li><a href="#"><i class="flaticon-chat-comment-oval-speech-bubble-with-text-lines"></i>Message</a></li>
-                                <li><a href="{{ path('admin_AccountSettings') }}"><i class="flaticon-gear-loading"></i>Account Settings</a></li>
-                                {% if is_granted('ROLE_USER') %}
-                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="flaticon-turn-off"></i>Log Out</a></li>
-                                {% else %}
+                                <li><a href=""><i class="flaticon-gear-loading"></i>Account Settings</a></li>
+
+
+                                <li><a href=""><i class="flaticon-turn-off"></i>Log Out</a></li>
+
                                 <li><a href="#"><i class="flaticon-turn-off"></i>Log Out</a></li>
-                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -274,20 +265,9 @@
                                 </div>
                             </div>
                             <div class="item-content">
-                                {% if is_granted('ROLE_USER') %}
-                                <div class="item-title">{{ app.user.username }}</div>
-                                {% if is_granted('ROLE_ADMIN') %}
-                                    <div class="item-title1">Admin</div>
-                                    {% endif %}
-                                    {% if is_granted('ROLE_SUPER_ADMIN') %}
-                                        <div class="item-title1">SuperAdmin</div>
-                                    {% endif %}
-                                {% else %}
-                                    <div class="item-title">Aziz Arfaoui</div>
 
-                                <div class="item-title1">ADMIN</div>
-                                {% endif %}
-                            </div>
+                                <div class="item-title"></div>
+
 
                         </div>
 
@@ -300,7 +280,7 @@
                         <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
                         <ul class="nav sub-group-menu">
                             <li class="nav-item">
-                                <a href="{{ path('back')}}" class="nav-link"><i class="fas fa-angle-right"></i>Admin</a>
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Admin</a>
                             </li>
                             <li class="nav-item">
                                 <a href="index3.html" class="nav-link"><i
@@ -319,23 +299,23 @@
                         <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
                         <ul class="nav sub-group-menu">
                             <li class="nav-item">
-                                <a href="{{path('etudiant_list')}}" class="nav-link"><i class="fas fa-angle-right"></i>All
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>All
                                     Students</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('etudiant_approve') }}" class="nav-link"><i class="fas fa-angle-right"></i>Attendance list</a>
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Attendance list</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('etudiant_addmanually') }}" class="nav-link"><i class="fas fa-angle-right"></i>Add a Student manually</a>
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Add a Student manually</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('etudaint_subjectreview') }}" class="nav-link"><i class="fas fa-angle-right"></i>Forum to approve</a>
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Forum to approve</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('etudaint_allforumback') }}" class="nav-link"><i class="fas fa-angle-right"></i>Forum List</a>
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Forum List</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('etudaint_allreclamation') }}" class="nav-link"><i class="fas fa-angle-right"></i>Reclamations List</a>
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Reclamations List</a>
                             </li>
 
                         </ul>
@@ -345,12 +325,12 @@
                                     class="flaticon-multiple-users-silhouette"></i><span>Teachers</span></a>
                         <ul class="nav sub-group-menu">
                             <li class="nav-item">
-                                <a href="{{ path('showTeacher') }}" class="nav-link"><i class="fas fa-angle-right"></i>All
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>All
                                     Teachers</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ path('addTeacher') }}" class="nav-link"><i class="fas fa-angle-right"></i>Add
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Add
                                     Teacher</a>
                             </li>
 
@@ -361,15 +341,15 @@
                         <a href="#" class="nav-link"><i class="flaticon-couple"></i><span>Parents</span></a>
                         <ul class="nav sub-group-menu">
                             <li class="nav-item">
-                                <a href="{{ path('inscription_parent') }}" class="nav-link"><i class="fas fa-angle-right"></i>Add
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Add
                                     Parents</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('afficher_parent') }}" class="nav-link"><i
+                                <a href="" class="nav-link"><i
                                             class="fas fa-angle-right"></i>Parents Details</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('afficher_reclamation') }}" class="nav-link"><i class="fas fa-angle-right"></i>
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>
                                     Parent Reclamation</a>
                             </li>
                         </ul>
@@ -378,33 +358,33 @@
                         <a href="#" class="nav-link"><i class="fas fa-drum"></i><span>School Life</span></a>
                         <ul class="nav sub-group-menu">
                             <li class="nav-item">
-                                <a href="{{ path('afficherEvent') }}" class="nav-link"><i class="fas fa-angle-right"></i>All
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>All
                                     Events</a>
                             </li>
                             <li class="nav-item sidebar-nav-item">
                                 <a href="#" class="nav-link"><i class="fas fa-angle-right"></i><span>Add New Event</span></a>
                                 <ul class="nav sub-group-menu">
                                     <li class="nav-item">
-                                        <a href="{{ path('ajouterEvent') }}" class="nav-link"><i class="fas fa-angle-right"></i>Add
+                                        <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Add
                                             New Event</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ path('ajouterActivite') }}" class="nav-link"><i class="fas fa-angle-right"></i></i>Add New Sport Activity</a>
+                                        <a href="" class="nav-link"><i class="fas fa-angle-right"></i></i>Add New Sport Activity</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ path('ajouterTrip') }}" class="nav-link"><i class="fas fa-angle-right"></i>Add New Field Trip</a>
+                                        <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Add New Field Trip</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ path('ajouterCompetiton') }}" class="nav-link"><i class="fas fa-angle-right"></i>Add new Competition</a>
+                                        <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Add new Competition</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('afficherClub') }}" class="nav-link"><i class="fas fa-angle-right"></i>All
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>All
                                     Clubs</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('ajouterClub') }}" class="nav-link"><i class="fas fa-angle-right"></i>Add New
+                                <a href="" class="nav-link"><i class="fas fa-angle-right"></i>Add New
                                     Club</a>
                             </li>
 
@@ -442,16 +422,16 @@
                         </ul>
                     </li>
                     <li class="nav-item ">
-                        <a href="{{ path('admin_AddClasse') }}" class="nav-link"><i
+                        <a href="" class="nav-link"><i
                                     class="flaticon-maths-class-materials-cross-of-a-pencil-and-a-ruler"></i><span>Class</span></a>
 
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('admin_AddSubject') }}" class="nav-link"><i
+                        <a href="" class="nav-link"><i
                                     class="flaticon-open-book"></i><span>Subject</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('admin_AddSchedule') }}" class="nav-link"><i class="flaticon-calendar"></i><span>Class
+                        <a href="" class="nav-link"><i class="flaticon-calendar"></i><span>Class
                                     Routine</span></a>
                     </li>
                     <li class="nav-item">
@@ -482,11 +462,11 @@
                                     class="flaticon-chat"></i><span>Messeage</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('admin_AllAccounts') }}" class="nav-link"><i
+                        <a href="" class="nav-link"><i
                                     class="flaticon-multiple-users-silhouette"></i><span>All Accounts</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('admin_AddAccount') }}" class="nav-link"><i
+                        <a href="" class="nav-link"><i
                                     class="flaticon-settings"></i><span>Add Account</span></a>
                     </li>
                 </ul>
@@ -636,9 +616,7 @@
                             </div>
                             <div id="GenderChart"  >
 
-                                <script type="text/javascript">
-                                    {{ gc_draw(piechart, 'GenderChart') }}
-                                </script>
+
                             </div>
 
 
@@ -649,11 +627,11 @@
                             <div class="student-report">
                                 <div class="student-count pseudo-bg-blue">
                                     <h4 class="item-title">Female Users</h4>
-                                    <div class="item-number">{{FemalePercentage}} %</div>
+                                    <div class="item-number"></div>
                                 </div>
                                 <div class="student-count pseudo-bg-yellow">
                                     <h4 class="item-title">Male Users</h4>
-                                    <div class="item-number"> {{MalePercentage}} %</div>
+                                    <div class="item-number"> </div>
                                 </div>
                             </div>
                         </div>
