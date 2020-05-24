@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', sans-serif;
+}
+.Timetable {
+  position: relative;
+  display: block;
+  padding: 20px;
+}
+.Timetable tr {
+  background: #032855;
+}
+.Timetable tr:nth-child(even) {
+  background: #032855;
+}
+.Timetable .Timetable__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.Timetable .Timetable__table td,
+.Timetable .Timetable__table th {
+  padding: 4px 2px;
+}
+.Timetable .Timetable__table th {
+  font-weight: 300;
+  height: 65px;
+}
+.Timetable .Timetable__table tbody th {
+  border-right: 0.5px solid #001c3e;
+}
+.Timetable .Timetable__table tbody td {
+  border: 1px solid #032855;
+}
+.Timetable .Timetable__table .Timetable__time,
+.Timetable .Timetable__table .Timetable__room {
+  background: #032855;
+  color: #fff;
+}
+.Timetable .Timetable__table .Timetable__room {
+  border-bottom: 1px solid #001c3e;
+}
+.Timetable .Timetable__table .Timetable__time th {
+  width: 100px;
+}
+.Timetable thead tr {
+  background: none;
+}
+.Timetable thead tr td,
+.Timetable thead tr th {
+  color: #fff;
+  font-size: 1.5em;
+}
+.Allocation {
+  display: block;
+  border-radius: 2px;
+  background: #57b3e7;
+  padding: 5px;
+  text-align: center;
+  box-shadow: rgba(0,0,0,0.34) 0 1px 3px;
+  color: #fff;
+  height: 65px;
+}
+.Allocation.please {
+  background: #e77f3f;
+}
+.Allocation.pdp {
+  background: #68b546;
+  color: #fff;
+}
+.Allocation span {
+  display: block;
+  padding: 3px 0;
+}
+.Allocation span.Allocation__title {
+  font-size: 1.3em;
+  font-weight: 600;
+}

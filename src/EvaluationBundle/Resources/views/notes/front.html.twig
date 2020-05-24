@@ -1,0 +1,241 @@
+
+
+{% extends 'baseFront.html.twig'%}
+
+ {% block body %}
+
+     <link rel="shortcut icon" type="image/x-icon" href=" {{ asset('img/favicon.png') }} ">
+     <!-- Normalize CSS -->
+     <link rel="stylesheet" href=" {{ asset('css/normalize.css') }}">
+
+     <!-- Main CSS -->
+     <link rel="stylesheet"  href=" {{ asset('css/main.css') }} ">
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href=" {{ asset('css/bootstrap.min.css') }} " >
+     <!-- Fontawesome CSS -->
+     <link rel="stylesheet" href=" {{ asset('css/all.min.css') }} ">
+     <!-- Flaticon CSS -->
+     <link rel="stylesheet"  href=" {{ asset('fonts/flaticon.css') }} " >
+     <!-- Full Calender CSS -->
+     <link rel="stylesheet" href=" {{ asset('css/fullcalendar.min.css') }} ">
+     <!-- Animate CSS -->
+     <link rel="stylesheet" href=" {{ asset('css/animate.min.css') }} " >
+     <!-- Select 2 CSS -->
+     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }} ">
+     <!-- Date Picker CSS -->
+     <link rel="stylesheet" href="{{  asset('css/datepicker.min.css') }}">
+     <!-- Custom CSS -->
+     <link rel="stylesheet" href=" {{ asset('style.css') }} " >
+     <!-- Modernize js -->
+     <script href=" {{ asset('js/modernizr-3.6.0.min.js') }} "></script>
+     <!-- Breadcubs Area End Here -->
+
+
+     <!-- Student Table Area Start Here -->
+
+
+     <div class="card-body">
+         <!-- SEEEEARCH ---------->
+
+         <link rel="stylesheet" href=" {{ asset('css/SEARCH.css') }} " >
+         <div class="item-title">
+             <h2 class="text-black h2 t600 mb-2">What Event Are You Looking For?</h2>
+         </div>
+
+
+
+         <div class="input-group md-form form-sm form-1 pl-0">
+             <div class="input-group-prepend">
+                 <span class="input-group-text cyan lighten-2" id="basic-text1"><i class="fas fa-search text-white" aria-hidden="true"></i></span>
+             </div>
+             <input  id="search" class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
+         </div>
+         <ul class="nav" id="side-menu">
+             <li>
+
+                 <ul class="nav nav-second-level" id="entitiesNav">
+                 </ul>
+             </li>
+         </ul>
+
+
+         <br> <br> <br>
+
+
+
+         <div class="heading-layout1">
+             <div class="item-title">
+                 <h2 class="text-black h2 t600 mb-2">All Events Data</h2>
+             </div>
+
+         </div>
+
+
+         <!--MESSAGE -->
+             <div class="alert alert-success">
+             </div>
+
+
+
+
+         <!-- recherche -->
+
+         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+         <script type="text/javascript">
+             jQuery(document).ready(function() {
+                 var searchRequest = null;
+
+                 $("#search").keyup(function() {
+                     var minlength = 1;
+                     var that = this;
+                     var value = $(this).val();
+                     var entitySelector = $("#entitiesNav").html('');
+                     if (value.length >= minlength ) {
+
+                         if (searchRequest != null)
+                             searchRequest.abort();
+
+
+                         searchRequest = $.ajax({
+                             type: "GET",
+                             url: "{{ path('ajaxFront') }}",
+                             data: {
+                                 'q' : value
+                             },
+                             dataType: "text",
+                             success: function(msg){
+                                 //we need to check if the value is the same
+                                 if (value===$(that).val()) {
+                                     var result = JSON.parse(msg);
+                                     $.each(result, function(key, arr) {
+                                         $.each(arr, function(id, value) {
+                                             if (key === 'posts') {
+                                                 if (id !== 'error') {
+                                                     console.log(value[1]);
+                                                     //value[0]: nomEvent et value[1]: typeEvent
+
+
+                                                     var large =  '<div class="card height-auto"> <div class="card-body"><div class="single-info-details"> <div class="item-img"><img src="{{ asset('img/figure/event.png') }}" alt="teacher"></div> <div class="item-content">  <div class="header-inline item-header">    <h3 class="text-dark-medium font-medium">'+value[0]+'</h3><div class="header-elements"><ul> <li><a href="#"><i class="fas fa-search-plus"></i></a></li> </ul> </div> </div> <div class="info-table table-responsive"> <table class="table text-nowrap"> <tbody> <tr> <td>Name:</td> <td class="font-medium text-dark-medium">'+value[0]+'</td> </tr> <tr> <td>Type:</td> <td class="font-medium text-dark-medium">'+value[1]+'</td> </tr> </tbody> </table> </div> </div> </div> </div> </div> </div> </div>';
+
+                                                     entitySelector.append(large);
+                                                 } else {
+                                                     entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                 }
+                                             }
+                                         });
+                                     });
+                                 }
+                             }
+                         });
+                     }
+                 });
+             });
+         </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <div class="card height-auto">
+             <div class="card-body">
+
+
+                 <div class="single-info-details">
+
+                     <div class="item-img">
+
+                         <img src="{{ asset('img/figure/event.png') }}" alt="teacher">
+                     </div>
+                     <div class="item-content">
+                         <div class="header-inline item-header">
+                             <h3 class="text-dark-medium font-medium">{{  ff.nomEvent }}</h3>
+                             <div class="header-elements">
+                                 <ul>
+                                     <li><a href="{{ path('afficherEventDetail',{'id':ff.id }) }}"><i class="fas fa-search-plus"></i></a></li>
+                                 </ul>
+                             </div>
+                         </div>
+
+                         <div class="info-table table-responsive">
+                             <table class="table text-nowrap">
+                                 <tbody>
+                                 <tr>
+                                     <td>Name:</td>
+                                     <td class="font-medium text-dark-medium"></td>
+                                 </tr>
+                                 <tr>
+                                     <td>Type:</td>
+                                     <td class="font-medium text-dark-medium"></td>
+                                 </tr>
+                                 <tr>
+                                     <td>Description: </td>
+                                     <td class="font-medium text-dark-medium"></td>
+                                 </tr>
+
+                                 </tbody>
+
+                             </table>
+                         </div>
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+     </div>
+     </div>
+
+
+
+
+     <section class="content-header">
+         <div class="container">
+             <div class="row">
+
+
+
+             </div>
+         </div>
+     </section>
+     <!-- Student Table Area End Here -->
+
+     </div>
+     </div>
+     <!-- Page Area End Here -->
+     <script src=" {{ asset('js/jquery-3.3.1.min.js') }} " ></script>
+     <!-- Plugins js -->
+     <script src=" {{ asset('js/plugins.js') }} " ></script>
+     <!-- Popper js -->
+     <script src=" {{ asset('js/popper.min.js') }} "></script>
+     <!-- Bootstrap js -->
+     <script src=" {{ asset('js/bootstrap.min.js') }} " ></script>
+     <!-- Counterup Js -->
+     <script src=" {{ asset('js/jquery.counterup.min.js') }} " ></script>
+     <!-- Moment Js -->
+     <script  src=" {{ asset('js/moment.min.js') }} " ></script>
+     <!-- Scroll Up Js -->
+     <script src=" {{ asset('js/jquery.scrollUp.min.js') }} " ></script>
+     <!-- Waypoints Js -->
+     <script  src=" {{ asset('js/jquery.waypoints.min.js') }} " ></script>
+     <!-- Select 2 Js -->
+     <script src="{{ asset('js/select2.min.js') }}"></script>
+     <!-- Date Picker Js -->
+     <script src="{{ asset('js/datepicker.min.js') }}"></script>
+     <!-- Full Calender Js -->
+     <script src=" {{ asset('js/fullcalendar.min.js') }} "></script>
+     <!-- Chart Js -->
+     <script  src=" {{ asset('js/Chart.min.js') }} " ></script>
+
+     <script  src=" {{ asset('css/normalize.css') }} " ></script>
+     <!-- Custom Js -->
+     <script  src=" {{ asset('js/main.js') }} " ></script>
+ {% endblock %}
