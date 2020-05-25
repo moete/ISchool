@@ -1,7 +1,6 @@
 bundle_evaluation:
     resource: "@EvaluationBundle/Resources/config/routing.yml"
     prefix:   /
-
 app:
     resource: "@AppBundle/Controller/"
     type: annotation

@@ -122,7 +122,7 @@
 
                             </ul>
                         </li>
->>>>>>> a65e9c524062d643d8d080dd595d6e0073de4b3d
+
 
                             <li><a href="#"><div>Teacher Space</div></a>
                                 <ul>
@@ -135,11 +135,9 @@
                                 </ul>
                             </li>
 
-<<<<<<< HEAD
+
                         {% endif %}
-=======
-{% endif %}
->>>>>>> a65e9c524062d643d8d080dd595d6e0073de4b3d
+
                     </ul>
 
                     <!-- Header Buttons
@@ -156,11 +154,9 @@
                             <a href=""   class="button button-rounded button-white button-light button-small m-0">Back</a>
                             <a href=""   class="button button-rounded button-white button-light button-small m-0">LOGOUT</a>
                         {% elseif  is_granted('ROLE_USER') %}
-<<<<<<< HEAD
                         {% endif %}
-=======
-                            {% endif %}
->>>>>>> a65e9c524062d643d8d080dd595d6e0073de4b3d
+
+
 
                     </div>
 
@@ -178,50 +174,8 @@
             </nav><!-- #primary-menu end -->
 
         </div>
-<<<<<<< HEAD
         <br>
-        {% block sonia %}
 
-
-            <script>
-                /**
-                 * After calling notifications_assets() "pusher" is now available
-                 * and you can use it this way
-                 */
-                    // select the channel you want to listen to
-                var channel = pusher.subscribe("notifications");// notifications channel
-                channel.bind("my-event", function(data) {
-                    console.log('from notifications channel', data);
-                });
-                var channel = pusher.subscribe("messages");// messages channel
-                channel.bind("my-event", function(data) {
-                    console.log('from messages channel', data);
-                });
-            </script>
-=======
-<br>
-{% block sonia %}
-
-
-        <script>
-            /**
-             * After calling notifications_assets() "pusher" is now available
-             * and you can use it this way
-             */
-
-                // select the channel you want to listen to
-            var channel = pusher.subscribe("notifications");// notifications channel
-            channel.bind("my-event", function(data) {
-                console.log('from notifications channel', data);
-            });
-
-            var channel = pusher.subscribe("messages");// messages channel
-            channel.bind("my-event", function(data) {
-                console.log('from messages channel', data);
-            });
-        </script>
->>>>>>> a65e9c524062d643d8d080dd595d6e0073de4b3d
-        {% endblock %}
 
     </header><!-- #header end -->
 
@@ -654,12 +608,9 @@
                     {% endif %}
                 </div>
 
-<<<<<<< HEAD
-=======
-                {% else %}
-                    <a href="" class="button button-white button-light button-rounded t500 m-0">Apply Now</a>
-                {% endif %}
->>>>>>> a65e9c524062d643d8d080dd595d6e0073de4b3d
+
+
+
             </div>
 
         </div>
