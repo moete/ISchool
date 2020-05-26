@@ -3,14 +3,19 @@
 namespace EvaluationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * matiere
+ * Matiere
  *
  * @ORM\Table(name="matiere")
  * @ORM\Entity(repositoryClass="EvaluationBundle\Repository\matiereRepository")
  */
-class matiere
+class Matiere
 {
     /**
      * @var int
@@ -35,6 +40,31 @@ class matiere
      */
     private $coeff;
 
+    /**
+     * @return mixed
+     */
+    public function getClasses()
+    {
+        return $this->classes;
+    }
+
+    /**
+     * @param mixed $classes
+     */
+    public function setClasses($classes)
+    {
+        $this->classes = $classes;
+    }
+    /**
+     * Many Users have Many Groups.
+     * @ManyToMany(targetEntity="Classe",inversedBy="Matiere")
+     * @JoinTable(name="subject_byClasse",
+     *      joinColumns={@JoinColumn(name="subject_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="class_id", referencedColumnName="id")}
+     *      )
+     */
+
+    private $classes;
 
     /**
      * Get id
@@ -51,7 +81,7 @@ class matiere
      *
      * @param string $nom
      *
-     * @return matiere
+     * @return Matiere
      */
     public function setNom($nom)
     {
@@ -71,11 +101,15 @@ class matiere
     }
 
     /**
-     * Set coeff
+     * Set public function __toString(){
+ // TODO: Implement __toString() method.
+}
+
+     *
      *
      * @param integer $coeff
      *
-     * @return matiere
+     * @return Matiere
      */
     public function setCoeff($coeff)
     {
@@ -93,5 +127,9 @@ class matiere
     {
         return $this->coeff;
     }
-}
+    public function __construct()
+    {
+        $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+}

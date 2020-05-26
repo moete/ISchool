@@ -5,12 +5,12 @@ namespace EvaluationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * classe
+ * Classe
  *
- * @ORM\Table(name="classe")
- * @ORM\Entity(repositoryClass="EvaluationBundle\Repository\classeRepository")
+ * @ORM\Table(name="Classe")
+ * @ORM\Entity(repositoryClass="EvaluationBundle\Repository\ClasseRepository")
  */
-class classe
+class Classe
 {
     /**
      * @var int
@@ -28,10 +28,7 @@ class classe
      */
     private $nom;
 
-
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -40,27 +37,39 @@ class classe
     }
 
     /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return classe
+     * @param int $id
      */
-    public function setNom($nom)
+    public function setId($id)
     {
-        $this->nom = $nom;
-
-        return $this;
+        $this->id = $id;
     }
 
     /**
-     * Get nom
-     *
      * @return string
      */
     public function getNom()
     {
         return $this->nom;
     }
-}
 
+
+
+    /**
+     * @param string $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function __toString(){
+        return $this->nom;
+    }
+
+
+
+}

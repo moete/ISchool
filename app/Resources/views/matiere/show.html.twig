@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Matiere</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ matiere.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ matiere.nom }}</td>
+            </tr>
+            <tr>
+                <th>Coeff</th>
+                <td>{{ matiere.coeff }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('matiere_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

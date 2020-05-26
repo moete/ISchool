@@ -7,5 +7,29 @@ template_aff:
 templatefront_aff:
     path:     /show
     defaults: { _controller: EvaluationBundle:Evaluation:TemplateF}
+admin_AddClasse:
+    path:     /AddClasse
+    defaults: { _controller: EvaluationBundle:Classe:AddClasse }
+admin_DeleteClasse:
+    path:     /DeleteClasse/{id}
+    defaults: { _controller: EvaluationBundle:Classe:DeleteClasse }
+matiere_index:
+    path:     /
+    defaults: { _controller: EvaluationBundle:Matiere:index }
+matiere_show:
+    path:     /{id}/show
+    defaults: { _controller: EvaluationBundle:Matiere:show }
+admin_AddSubject:
+    path:     /AddSubject
+    defaults: { _controller: EvaluationBundle:Matiere:AddSubject }
+admin_searchSubject:
+    path:     /searchSubject
+    defaults: { _controller: EvaluationBundle:Matiere:searchSubject }
+admin_DeleteSubject:
+    path:     /DeleteSubject/{id}
+    defaults: { _controller: EvaluationBundle:Matiere:DeleteSubject }
+admin_UpdateSubject:
+    path:     /UpdateSubject/{id}
+    defaults: { _controller: EvaluationBundle:Matiere:UpdateSubject }
 
 
