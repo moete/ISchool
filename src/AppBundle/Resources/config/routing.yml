@@ -1,0 +1,6 @@
+add:
+    path:     /add
+    defaults: { _controller: AppBundle:Security:add }
+redirect:
+    path:    /home
+    defaults: { _controller: AppBundle:Security:redirect }

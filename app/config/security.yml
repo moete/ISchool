@@ -20,9 +20,9 @@ security:
             form_login:
                 remember_me: true
                 csrf_token_generator: security.csrf.token_manager
+                use_forward: false
                 always_use_default_target_path: false
                 default_target_path: /home
-
             logout:       true
             anonymous:    true
             logout_on_user_change: true
