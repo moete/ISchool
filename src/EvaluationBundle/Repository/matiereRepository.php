@@ -26,7 +26,7 @@ class matiereRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery(
                 'SELECT s
                 FROM EvaluationBundle:Matiere s
-ORDER BY s.coefficient ASC '
+                ORDER BY s.coeff ASC '
             )
             ->getResult();
     }

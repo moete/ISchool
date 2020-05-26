@@ -2,8 +2,7 @@
 
 namespace EvaluationBundle\Controller;
 
-use EspeceBundle\Entity\Espece;
-use EspeceBundle\Form\EspeceType;
+
 use EvaluationBundle\Entity\Matiere;
 use EvaluationBundle\Form\MatiereType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,32 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class MatiereController extends Controller
 {
-    /**
-     * Lists all matiere entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
 
-        $matieres = $em->getRepository('EvaluationBundle:Matiere')->findAll();
-
-        return $this->render('matiere/index.html.twig', array(
-            'matieres' => $matieres,
-        ));
-    }
-
-    /**
-     * Finds and displays a matiere entity.
-     *
-     */
-    public function showAction(Matiere $matiere)
-    {
-
-        return $this->render('matiere/show.html.twig', array(
-            'matiere' => $matiere,
-        ));
-    }
 
        public function AddSubjectAction(Request $request)
        {
@@ -55,19 +29,15 @@ class MatiereController extends Controller
             */
            $paginator = $this->get('knp_paginator');
            $sort = $paginator->paginate($query);
-           $matieres = new Matiere();
-           $allSubjects=$this->getDoctrine()->getManager()->getRepository(Matiere::class)->findAll();
-           $form = $this->createForm(MatiereType::class, $matieres);
-           $form = $form->handleRequest($request);
+           $subject = new Matiere();
+           $form = $this->createForm(MatiereType::class,$subject);
+           $form->handleRequest($request);
            if ($form->isSubmitted() and $form->isValid()) {
-               $em = $this->getDoctrine()->getManager();
-               $em->persist($matieres);
-
-
+               $em->persist($subject);
                $em->flush();
-               return $this->redirectToRoute('admin_AddSubject');
+               return $this->redirectToRoute("admin_AddSubject");
            }
-           return $this->render('@Evaluation\Matiere\AddSubject.html.twig',array('form'=>$form->createView(),'allSubjects'=>$sort));
+           return $this->render('@Evaluation\Matiere\AddSubject.html.twig',array('form'=>$form->createView(), 'allSubjects'=>$sort));
        }
     public function searchSubjectAction(Request $request)
     {
@@ -90,10 +60,10 @@ class MatiereController extends Controller
         }
         return $realEntities;
     }
-    public function UpdateSubjectAction($subjectId,Request $request){
+    public function UpdateSubjectAction($id,Request $request){
         $em = $this->getDoctrine()->getManager();
         $allSubjects = $em->getRepository(Matiere::class)->findAll();
-        $subject =  $em->getRepository(Matiere::class)->find($subjectId);
+        $subject =  $em->getRepository(Matiere::class)->find($id);
         $form = $this->createForm(MatiereType::class,$subject);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid() )

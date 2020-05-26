@@ -13,6 +13,37 @@
         <div class="col-4-xxxl col-12">
             <div class="card height-auto">
                 <div class="card-body">
+                    <form class="mg-b-20">
+                        <div class="row gutters-8">
+
+                            <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                <input id="searchName"  name="searchName" type="text" placeholder="Search by Name ..." class="form-control">
+                            </div>
+                            <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
+
+                            </div>
+                            <div class="col-4-xxxl col-xl-3 col-lg-3 col-12 form-group">
+
+                            </div>
+
+                            <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+
+                                <button type="submit" class="fw-btn-fill radius-30 btn-gradient-yellow " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By&nbsp;<i class="fas fa-filter"></i></button>
+                                <div class="dropdown-menu">
+                                    <p id="highest" class="dropdown-item" >{{ knp_pagination_sortable(allSubjects,'Lowest coefficient','s.coeff') }}</p>
+
+                                    <div class="dropdown-divider"></div>
+                                    {% set new_direction = 'asc' %}
+                                    {% if allSubjects.isSorted('s.coeff') %}
+                                        {% set new_direction = ('asc' == allSubjects.direction ? 'desc' : 'asc') %}
+                                    {% endif %}
+                                    <p id="highest" class="dropdown-item" >{{ knp_pagination_sortable(allSubjects,'Highest coefficient','s.coeff') }}</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
                     <div class="heading-layout1">
                         <div class="item-title">
                             <h3>Add Class </h3>
@@ -102,7 +133,7 @@
                                         searchRequest.abort();
                                     searchRequest = $.ajax({
                                         type: "GET",
-                                        url: {{ path('admin_searchSubject') }},
+                                        url:"{{ path('admin_searchSubject') }}",
                                         data: {
                                             'searchName': value
                                         },
@@ -188,9 +219,9 @@
                                                 <span class="flaticon-more-button-of-three-dots"></span>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href=""><i
+                                                <a class="dropdown-item" href="{{ path('admin_DeleteSubject',{'id':as.id}) }}"><i
                                                             class="fas fa-times text-orange-red"></i>Delete</a>
-                                                <a class="dropdown-item"  href="{{ path('admin_DeleteSubject',{'id':as.id}) }}"><i
+                                                <a class="dropdown-item"  href="{{ path('admin_UpdateSubject',{'id':as.id}) }}"><i
                                                             class="fas fa-cogs text-dark-pastel-green"></i>Update</a>
 
                                             </div>

@@ -20,7 +20,7 @@ class MatiereType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom',ChoiceType::class,array('choices'=>array('A'=>'A','B'=>'B','C'=>'C','D'=>'D')))->add('coeff')
+        $builder->add('nom',ChoiceType::class,array('choices'=>array('PI'=>'PI','TWIN_2.0'=>'TWIN_2.0',' ANGLAIS'=>'ANGLAIS','TLA'=>'TLA')))->add('coeff')
             ->add('classes')
             ->add('Add',SubmitType::class , [
                 'attr' => ['class' => 'btn-fill-lg btn-gradient-yellow btn-hover-bluedark'],
@@ -30,7 +30,8 @@ class MatiereType extends AbstractType
             ])
             ->add('Reset',ResetType::class, [
                 'attr' => ['class' => 'btn-fill-lg bg-blue-dark btn-hover-yellow'],
-            ]);;    }
+            ]);;
+    }
             /**
      * {@inheritdoc}
      */
