@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+ {% block body %}
+  <div class="dashboard-content-one">
+   <!-- Breadcubs Area Start Here -->
+   <div class="breadcrumbs-area">
+    <h3>Parents</h3>
+    <ul>
+     <li>
+      <a href="index.html">Home</a>
+     </li>
+     <li>All Parents</li>
+    </ul>
+   </div>
+   <!-- Breadcubs Area End Here -->
+   <!-- Teacher Table Area Start Here -->
+   <div class="card height-auto">
+    <div class="card-body">
+     <div class="heading-layout1">
+      <div class="item-title">
+       <h3>All Parents Data</h3>
+      </div>
+      <div class="dropdown">
+       <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+          aria-expanded="false">...</a>
+
+       <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#"><i
+                 class="fas fa-times text-orange-red"></i>Close</a>
+        <a class="dropdown-item" href="#"><i
+                 class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+        <a class="dropdown-item" href="#"><i
+                 class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+       </div>
+      </div>
+     </div>
+     <div class="item-title">
+      <h3>Search An Event</h3>
+     </div>
+     <form class="mg-b-20">
+      <div class="row gutters-8">
+       <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
+        <input id="ser" name="q" type="text" placeholder="Search by ID ..." class="form-control search">
+       </div>
+       <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+        <input id="ser" name="q" type="text" placeholder="Search by Name ..." class="form-control search">
+       </div>
+       <div class="col-4-xxxl col-xl-3 col-lg-3 col-12 form-group">
+        <input type="text" placeholder="Search by Joinig Date" class="form-control search">
+       </div>
+       <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+        <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
+       </div>
+      </div>
+     </form>
+
+
+     <ul class="nav" id="side-menu">
+      <li>
+
+       <ul class="nav nav-second-level" id="entitiesNav">
+       </ul>
+      </li>
+     </ul><br>
+
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+     <script type="text/javascript">
+      jQuery(document).ready(function() {
+       var searchRequest = null;
+       $("#ser").keyup(function() {
+        var minlength = 1;
+        var that = this;
+        var value = $(this).val();
+        var entitySelector = $("#search").html('');
+        entitySelector.hide();
+        if (value.length >= minlength ) {
+         if (searchRequest != null)
+          searchRequest.abort();
+         searchRequest = $.ajax({
+          type: "GET",
+          url: "{{ path('ajax_parent') }}",
+          data: {
+           'q' : value
+          },
+          dataType: "text",
+          success: function(msg){
+           //we need to check if the value is the same
+           if (value===$(that).val()) {
+            var result = JSON.parse(msg);
+            $.each(result, function(key, arr) {
+             $.each(arr, function(id, value) {
+              if (key === 'posts') {
+               if (id !== 'error') {
+
+                console.log(value[1]);
+                var large= '<tbody><tr> <td> '+value[0]+'</td> <td>'+value[1]+'</td> <td> '+value[2]+'</td><td> '+value[3]+'</td><td> '+value[4]+'</td><td> '+ value[5]+'</td><td> '+ value[6]+'</td><td> '+ value[7]+'</td> <td> '+ value[8]+'</td><td> '+ value[9]+'</td><td> '+ value[10]+'</td></tr></tbody>';
+                entitySelector.replaceWith(large) ;
+               }
+               else {
+                entitySelector.append('<li class="errorLi">'+value+'</li>');
+               }
+              }
+             });
+            });
+           }
+          }
+         });
+        }
+       });
+      });
+     </script>
+
+
+
+
+
+
+     <div class="table-responsive"  >
+      <table class="table display data-table text-nowrap">
+       <thead>
+       <tr>
+        <th>{{ knp_pagination_sortable(var,'id','pa.id') }}</th>
+        <th>Name</th>
+
+        <th>E-mail</th>
+
+        <th></th>
+       </tr>
+       </thead>
+       {% for i in var %}
+        <tbody  id="search">
+        <tr >
+
+         <td>
+          <div class="form-check">
+           <input type="checkbox" class="form-check-input ">
+           <label class="form-check-label">#{{  i.id }}</label>
+          </div>
+         </td>
+         <td> {{  i.firstName }} {{  i.lastName }}</td>
+
+
+         <td> {{  i.email }} </td>
+
+         <td>
+          <div class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+              aria-expanded="false">
+            <span class="flaticon-more-button-of-three-dots"></span>
+           </a>
+           <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="{{ path('detail_parent',{'id':i.id }) }}"><i
+                     class="fas fa-eye text-orange-peel"></i> Show Details</a>
+            <a class="dropdown-item" href="{{ path('accepter_parent',{'id':i.id }) }}"><i class="fas fa-check"></i> Accept parent</a>
+            <a class="dropdown-item" href="{{ path('refuser_parent',{'id':i.id }) }}"><i class="fas fa-minus-circle"></i> Refuse parent</a>
+
+           </div>
+          </div>
+         </td>
+
+        </tr>
+
+
+
+        </tbody>
+       {% endfor %}
+
+      </table>
+      <div class="navigation">
+       {{ knp_pagination_render(var) }}
+      </div>
+
+
+     </div>
+     <br><br>
+     <div class="col-xl-3 col-sm-6 col-12">
+      <div class="dashboard-summery-oneP mg-b-20">
+       <div class="row align-items-center">
+        <div class="col-6">
+         <div class="item-icon bg-light-yellow">
+          <img src="{{ asset('fonts/mother.png') }}" width="60">
+         </div>
+        </div>
+        <div class="col-6">
+         <div class="item-content">
+          <div class="item-title">Parents</div>
+          <div class="item-number"><span class="counter" data-num="{{ nbp }}"></span></div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+
+    </div>
+
+   </div>
+
+   <!-- Teacher Table Area End Here -->
+   <footer class="footer-wrap-layout1">
+    <div class="copyright">© Copyrights <a href="#">SparkIT</a> 2020. All rights reserved</div>
+   </footer>
+  </div>
+
+ {% endblock %}

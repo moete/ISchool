@@ -27,6 +27,12 @@ class note
      * @ORM\Column(name="noteds", type="float")
      */
     private $noteds;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="CC", type="float", nullable=true)
+     */
+    private $cC;
 
     /**
      * @var float
@@ -35,7 +41,23 @@ class note
      */
     private $noteexamen;
 
+    /**
+     * @var string
+     * @ORM\ManyToOne(targetEntity="EvaluationBundle\Entity\Matiere")
+     * @ORM\JoinColumn(name="id_subject",referencedColumnName="id")
+     *
+     * @ORM\Column(name="subject", type="string" , length=255, nullable=true)
+     */
+    private $subject;
 
+
+    /**
+     * @var string
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="id_studentt",referencedColumnName="id")
+     * @ORM\Column(name="student", type="string", length=255, nullable=true)
+     */
+    private $student;
     /**
      * Get id
      *
@@ -68,6 +90,54 @@ class note
     public function getNoteds()
     {
         return $this->noteds;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCC()
+    {
+        return $this->cC;
+    }
+
+    /**
+     * @param float $cC
+     */
+    public function setCC($cC)
+    {
+        $this->cC = $cC;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStudent()
+    {
+        return $this->student;
+    }
+
+    /**
+     * @param string $student
+     */
+    public function setStudent($student)
+    {
+        $this->student = $student;
     }
 
     /**

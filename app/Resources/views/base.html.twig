@@ -306,8 +306,19 @@
                                 <a href="index3.html" class="nav-link"><i
                                             class="fas fa-angle-right"></i>Students</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="index4.html" class="nav-link"><i class="fas fa-angle-right"></i>Parents</a>
+                            <li class="nav-item sidebar-nav-item">
+                                <a href="#" class="nav-link"><i class="flaticon-couple"></i><span>Parents</span></a>
+                                <ul class="nav sub-group-menu">
+                                    <li class="nav-item">
+                                        <a href="{{ path('inscription_parent') }}" class="nav-link"><i class="fas fa-angle-right"></i>Add
+                                            Parents</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ path('afficher_parent') }}" class="nav-link"><i
+                                                    class="fas fa-angle-right"></i>Parents Details</a>
+                                    </li>
+
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="index5.html" class="nav-link"><i
@@ -455,8 +466,8 @@
                                     Routine</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="student-attendence.html" class="nav-link"><i
-                                    class="flaticon-checklist"></i><span>Attendence</span></a>
+                        <a href="{{ path('AffectMark') }}" class="nav-link"><i
+                                    class="flaticon-checklist"></i><span>Marks</span></a>
                     </li>
                     <li class="nav-item sidebar-nav-item">
                         <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Exam</span></a>

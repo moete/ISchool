@@ -30,7 +30,7 @@ class MatiereType extends AbstractType
             ])
             ->add('Reset',ResetType::class, [
                 'attr' => ['class' => 'btn-fill-lg bg-blue-dark btn-hover-yellow'],
-            ]);;
+            ]);
     }
             /**
      * {@inheritdoc}

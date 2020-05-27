@@ -1,0 +1,92 @@
+
+
+{% extends 'baseFront.html.twig'%}
+
+{% block ghasoussa %}
+    <section id="slider" class="slider-element bgcolor clearfix" style="height: auto; padding: 60px 0; background: url('demos/movers/images/bg-2.png') no-repeat center center / 100% 100%;">
+
+        <div class="container" style="z-index: 2">
+            <div class="center">
+                <h2 class="text-white h2 t600 mb-2">Parent Space</h2>
+                <p class="text-white-50">SparkooL Is An All In­-One School Management Application</p>
+            </div>
+<br><br>
+            <ul class="nav nav-tabs nav-justified flex-column border-bottom-0 flex-md-row bgcolor mt-4" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link py-3" id="home-moving-tab" data-toggle="tab" href="#home-moving" role="tab" aria-controls="home-moving" aria-selected="true">Parent Name</a>
+                </li>
+
+            </ul>
+            <div class="tab-content rounded-bottom shadow bg-white py-4 px-5">
+                <div class="tab-pane fade show active" id="home-moving" role="tabpanel" aria-labelledby="home-moving-tab">
+
+
+
+                        <div class="form-result"></div>
+                        <form class="row home-moving-form position-relative mb-0" method="post">
+                            {{ form_start(form) }}
+
+                            <div class="form-process"></div>
+
+                            <div class="col-sm-6 input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text nobg"><i class="icon-line2-user"></i></span>
+                                </div>
+                                {{ form_widget (form.firstName , {'attr': {'class':'form-control','placeholder':'First Name'}}) }}
+                            </div>
+
+                            <div class="col-sm-6 input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text nobg"><i class="icon-line2-user"></i></span>
+                                </div>
+                                {{ form_widget (form.lastName , {'attr': {'class':'form-control','placeholder':'Last Name'}}) }}
+                            </div>
+                            <div class="col-sm-6 input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text nobg"><i class="icon-line2-envelope"></i></span>
+                                </div>
+                                {{ form_widget (form.email , {'attr': {'class':'form-control','placeholder':'E-Mail'}}) }}
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="col-12">
+                                {{ form_widget(form.Submit) }}
+                            </div>
+
+                            <input type="hidden" name="prefix" value="home-moving-form-">
+                            <input type="hidden" name="subject" value="Home Moving Request">
+                            <input type="hidden" name="html_title" value="Home Moving">
+
+
+                            {{ form_end(form,{'render_rest': false}) }}
+                        </form>
+
+                </div>
+
+
+    </section>
+{% endblock  %}
+{% block body %}
+{% endblock %}

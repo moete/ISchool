@@ -131,5 +131,12 @@ class Matiere
     {
         $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    /**
+     *
+     * @return string
+     */
+    public function __toString(){
+        return $this->nom;
+    }
 
 }

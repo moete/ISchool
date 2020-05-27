@@ -12,18 +12,24 @@ class ClasseController extends Controller
     public function AddClasseAction(Request $request)
 {
 
-    $Classe = new Classe();
-    $form = $this->createForm(ClasseType::class, $Classe);
-    $form = $form->handleRequest($request);
-    if ($form->isSubmitted() and $form->isValid()) {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($Classe);
-        $em->flush();
-        return $this->redirectToRoute('admin_AddClasse');
-    }
-    return $this->render('@Evaluation/Classe/AddClass.html.twig', array('allClasses'=>$form->createView()));
 
+    $em = $this->getDoctrine()->getManager();
+    $allNotes = $em->getRepository(Classe::class)->findAll();
+
+
+
+    $note = new Classe();
+    $form = $this->createForm(ClasseType::class,$note);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() and $form->isValid()) {
+        $em->persist($note);
+        $em->flush();
+        return $this->redirectToRoute("admin_AddClasse");
+    }
+    return $this->render('@Evaluation\Classe\AddClass.html.twig',array('form'=>$form->createView(), 'allNotes'=>$allNotes));
 }
+
+
 
 
 }

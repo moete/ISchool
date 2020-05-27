@@ -31,5 +31,39 @@ admin_DeleteSubject:
 admin_UpdateSubject:
     path:     /UpdateSubject/{id}
     defaults: { _controller: EvaluationBundle:Matiere:UpdateSubject }
+AffectMark:
+    path:     /AffectMark
+    defaults: { _controller: EvaluationBundle:Note:AffectMark }
+etudaint_markview :
+    path:     /marksview
+    defaults: { _controller: EvaluationBundle:Note:marksView}
+etudaint_getmyforum :
+    path:     /mysubjects
+    defaults: { _controller: EtudiantBundle:Matiere:getmyForumSub}
+ajout_front:
+    path:     /ajoutfront
+    defaults: { _controller: EvaluationBundle:Note:AjoutFront }
+inscription_parent:
+    path:     /inscri
+    defaults: { _controller: EvaluationBundle:Note:AjoutParent }
+afficher_parent:
+    path:     /afficher
+    defaults: { _controller: EvaluationBundle:Note:AfficherParent }
+ajax_parent:
+    path:     /ajax
+    defaults: { _controller: EvaluationBundle:Note:search }
+accepter_parent:
+    path:     /accepter/{id}
+    defaults: { _controller: EvaluationBundle:Note:AccepterParent }
+
+refuser_parent:
+    path:     /refuser/{id}
+    defaults: { _controller: EvaluationBundle:Note:RefuserParent }
+detail_parent:
+    path:     /detail/{id}
+    defaults: { _controller: EvaluationBundle:Note:DetailParent }
+PDF:
+    path:     /pdf/{id}
+    defaults: { _controller: EvaluationBundle:Note:DisplayPDF }
 
 
