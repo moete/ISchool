@@ -30,14 +30,14 @@
 
                                 <button type="submit" class="fw-btn-fill radius-30 btn-gradient-yellow " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By&nbsp;<i class="fas fa-filter"></i></button>
                                 <div class="dropdown-menu">
-                                    <p id="highest" class="dropdown-item" >{{ knp_pagination_sortable(allSubjects,'Lowest coefficient','s.coeff') }}</p>
+                                    <p id="highest" class="dropdown-item" >{{ knp_pagination_sortable(allSubjects,'Highest coefficient','s.coeff') }}</p>
 
                                     <div class="dropdown-divider"></div>
                                     {% set new_direction = 'asc' %}
                                     {% if allSubjects.isSorted('s.coeff') %}
                                         {% set new_direction = ('asc' == allSubjects.direction ? 'desc' : 'asc') %}
                                     {% endif %}
-                                    <p id="highest" class="dropdown-item" >{{ knp_pagination_sortable(allSubjects,'Highest coefficient','s.coeff') }}</p>
+                                    <p id="highest" class="dropdown-item" >{{ knp_pagination_sortable(allSubjects,'Lowest coefficient','s.coeff') }}</p>
                                 </div>
                             </div>
 

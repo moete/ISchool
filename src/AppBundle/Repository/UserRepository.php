@@ -29,6 +29,10 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             )
             ->getResult();
     }
+    public function findUsers()
+    {
+        return $this->getEntityManager()->createQuery("SELECT u FROM AppBundle:User where u.userType = 'NULL'")->getResult();
+    }
 
     public function countParent()
     {

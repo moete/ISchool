@@ -3,12 +3,18 @@
 namespace EvaluationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Classe
  *
  * @ORM\Table(name="Classe")
  * @ORM\Entity(repositoryClass="EvaluationBundle\Repository\ClasseRepository")
+ * @UniqueEntity("nom",message="This Class is already Added")
  */
 class Classe
 {
@@ -24,9 +30,17 @@ class Classe
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255, unique=true)
      */
     private $nom;
+    /**
+     * Many Groups have Many Users.
+     * @ManyToMany(targetEntity="Matiere", mappedBy="classe")
+     */
+    private $subjects;
+    public function __construct() {
+        $this->subjects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * @return int
@@ -50,6 +64,22 @@ class Classe
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubjects()
+    {
+        return $this->subjects;
+    }
+
+    /**
+     * @param mixed $subjects
+     */
+    public function setSubjects($subjects)
+    {
+        $this->subjects = $subjects;
     }
 
 

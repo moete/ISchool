@@ -17,7 +17,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @UniqueEntity("id",message="This ID is already Used , ID most be Unique")
  * @UniqueEntity("email",message="This Email Address is already used")
- * @UniqueEntity("phone",message="Phone Number Already Exist")
  */
 class User extends BaseUser
 {
@@ -31,7 +30,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
-     * @Assert\NotBlank(message="Please Insert a First Name")
      * @Assert\Length(
      *     min= "3",
      *     max= "15",
@@ -46,7 +44,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
-     * @Assert\NotBlank(message="Please Insert a Last Name")
      * @Assert\Length(
      *     min= "3",
      *     max= "15",

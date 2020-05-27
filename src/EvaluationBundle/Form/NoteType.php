@@ -18,7 +18,7 @@ class NoteType extends AbstractType
     {
         $builder->add('cC')->add('noteds')->add('noteexamen')->add('subject',EntityType::class,[
             'class' => 'EvaluationBundle\Entity\Matiere',
-            'placeholder' => 'Select Class *',
+            'placeholder' => 'Select Subject *',
             'mapped' => true
         ])
             ->add('student',EntityType::class,[

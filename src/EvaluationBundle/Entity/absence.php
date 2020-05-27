@@ -3,6 +3,11 @@
 namespace EvaluationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * absence
@@ -28,7 +33,24 @@ class absence
      */
     private $dateabsence;
 
+    /**
+     * @var string
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="id_studentt",referencedColumnName="id")
+     * @ORM\Column(name="student", type="string", length=255, nullable=true)
+     */
+    private $student;
 
+    /**
+     * Many Users have Many Groups.
+     * @ManyToMany(targetEntity="Classe",inversedBy="Matiere")
+     * @JoinTable(name="abscence_byClasse",
+     *      joinColumns={@JoinColumn(name="abscence_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="class_id", referencedColumnName="id")}
+     *      )
+     */
+
+    private $classes;
     /**
      * Get id
      *

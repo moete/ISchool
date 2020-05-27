@@ -24,7 +24,7 @@ class ClasseController extends Controller
     if ($form->isSubmitted() and $form->isValid()) {
         $em->persist($note);
         $em->flush();
-        return $this->redirectToRoute("admin_AddClasse");
+        return $this->redirectToRoute("admin_AddSubject");
     }
     return $this->render('@Evaluation\Classe\AddClass.html.twig',array('form'=>$form->createView(), 'allNotes'=>$allNotes));
 }

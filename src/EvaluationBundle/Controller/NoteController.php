@@ -5,6 +5,7 @@ namespace EvaluationBundle\Controller;
 
 
 use AppBundle\Entity\User;
+use Cassandra\Type\UserType;
 use EvaluationBundle\Entity\note;
 use EvaluationBundle\Form\NoteType;
 use EvaluationBundle\Form\ParentsType;
@@ -23,7 +24,7 @@ class NoteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $allNotes = $em->getRepository(note::class)->findAll();
-        //$allusers =$em->getRepository(User::ROLE_DEFAULT)->findAll();
+
         $dql = "SELECT s FROM EvaluationBundle:note s";
         $query = $em->createQuery($dql);
         /**
