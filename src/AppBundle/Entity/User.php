@@ -26,37 +26,48 @@ class User extends BaseUser
 * @ORM\GeneratedValue(strategy="AUTO")
 */
     protected $id;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
     /**
      * @var string
-     *
-     * @ORM\Column(name="firstName", type="string", length=255)
-     * @Assert\Length(
-     *     min= "3",
-     *     max= "15",
-     *     minMessage = "First Name must be at least {{ limit }} characters long",
-     *     maxMessage = "First Name  cannot be longer than {{ limit }} characters"
-     * )
-     * @Assert\Type(type="alpha",message="First Name Most contain only characters")
+     * @ORM\Column(name="firstName", type="string", length=255,nullable=true)
+
      */
     private $firstName;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="lastName", type="string", length=255)
-     * @Assert\Length(
-     *     min= "3",
-     *     max= "15",
-     *     minMessage = "Last Name must be at least {{ limit }} characters long",
-     *     maxMessage = "Last Name  cannot be longer than {{ limit }} characters"
-     * )
-     * @Assert\Type(type="alpha",message="Last Name Most contain only characters")
+     * @ORM\Column(name="lastName", type="string", length=255,nullable=true)
      */
     private $lastName;
     /**
      * @var string
      *
-     * @ORM\Column(name="userType", type="string", length=255, nullable=true)
+     * @ORM\Column(name="userType", type="string", length=255, nullable=true,nullable=true)
      * @Assert\Choice({"Administrator" ,"Responsable Etudiant", "Responsable enseignant","Responsable parent","User","Etudiant","Teacher"},message="Please Select a valid User Type")
      */
     private $userType;

@@ -1,0 +1,71 @@
+{% extends 'baseFront.html.twig'%}
+
+{% block form %}
+
+                        <a class="nav-link py-3" id="home-moving-tab" data-toggle="tab" href="#home-moving" role="tab" aria-controls="home-moving" aria-selected="true">Change Login Informations</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content rounded-bottom shadow bg-white py-4 px-5">
+                    <div class="tab-pane fade show active" id="home-moving" role="tabpanel" aria-labelledby="home-moving-tab">
+
+                            <div class="form-result"></div>
+                            <form class="row home-moving-form position-relative mb-0" method="post">
+                                {{ form_start(form) }}
+                                {{ form_row(form._token) }}
+                                <div class="form-process"></div>
+
+                                <div class="col-sm-6 input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text nobg"><i class="icon-line2-user"></i></span>
+                                    </div>
+                                    {{ form_widget (form.username , {'attr': {'class':'form-control'}}) }}
+                                </div>
+
+                                <div class="col-sm-6 input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text nobg"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    {{ form_widget (form.password , {'attr': {'class':'form-control'}}) }}
+                                </div>
+                                {{ form_widget (form.email , {'attr': {'class': 'hidden'}}) }}
+
+                                {{ form_widget (form.firstName , {'attr': {'class': 'hidden'}}) }}
+                                {{ form_widget (form.lastName , {'attr': {'class': 'hidden'}}) }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="col-12">
+                                    {{ form_widget(form.Confirm) }}
+                                </div>
+
+{{ form_end(form,{'render_rest': false}) }}
+                            </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-flex flex-wrap justify-content-center">
+                <img src="{{ asset('FrontEnd/img/ed2.png')}}" alt="Image 1" class="d-flex align-self-end ml-5 mt-3">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block body %}
+
+{% endblock %}
+{% block join %}
+{% endblock %}

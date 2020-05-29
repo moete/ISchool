@@ -65,5 +65,30 @@ detail_parent:
 PDF:
     path:     /pdf/{id}
     defaults: { _controller: EvaluationBundle:Note:DisplayPDF }
+addAbs:
+    path:     /addAbs/{id}
+    defaults: { _controller: EvaluationBundle:Absent:AddAbs }
+etudiant_list:
+    path:     /listeStudents
+    defaults: { _controller: EvaluationBundle:Absent:allstudents }
+addTeacher:
+    path:     /addTeacher
+    defaults: { _controller: EvaluationBundle:Absent:AddTeacher }
+showTeacher:
+    path:     /showTeacher
+    defaults: { _controller: EvaluationBundle:Absent:ShowTeacher }
+updateLogin:
+    path:     /updateLogin/{id}
+    defaults: { _controller: EvaluationBundle:Absent:UpdateLogin }
+interfaceTeacher:
+    path:     /interfaceTeacher/{id}
+    defaults: { _controller: EvaluationBundle:Absent:Interface }
+showAbsence:
+    path:     /showAbsence/{id}
+    defaults: { _controller: EvaluationBundle:Absent:ShowAbsence }
+showStudentDetails:
+    path:     /showStudentDetails/{id}
+    defaults: { _controller: EvaluationBundle:Absent:ShowStudentDetails }
+
 
 

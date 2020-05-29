@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="dashboard-content-one">
+        <!-- Breadcubs Area Start Here -->
+
+    <div class="breadcrumbs-area">
+        <h3>Teacher Informations</h3>
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li><a href="">All Students</a></li>
+            </li>
+
+          <a href=""><li>  Student Details {{ nb }}</li></a>
+        </ul>
+    </div>
+
+    <!-- Breadcubs Area End Here -->
+        <!-- Student Table Area Start Here -->
+        <div class="card height-auto">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>More Informations</h3>
+                    </div>
+
+                </div>
+                <div class="single-info-details">
+                    <div class="item-img">
+                        <img src="{{ asset('img/figure/teacher.jpg') }}" alt="teacher">
+                    </div>
+                    <div class="item-content">
+                        <div class="header-inline item-header">
+                            <h3 class="text-dark-medium font-medium">{{ var.firstName }} {{ var.lastName }}</h3>
+                            <div class="header-elements">
+                                <ul>
+                                    <li><a href="{{ path('showAbsence',{'id':var.id }) }}"><i class="fas fa-calendar-check"></i></a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="info-table table-responsive">
+                            <table class="table text-nowrap">
+
+
+                                <tbody>
+
+                                <tr>
+                                    <td>First Name:</td>
+                                    <td class="font-medium text-dark-medium">{{ var.firstName }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name:</td>
+                                    <td class="font-medium text-dark-medium">{{ var.lastName }}</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td class="font-medium text-dark-medium">{{ var.email }}</td>
+                                </tr>
+
+
+
+
+
+
+
+                                </tbody>
+
+
+                            </table>
+
+
+                    </div>
+                </div>
+            </div>
+<br><br><br>
+                <div class="row gutters-20">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="dashboard-summery-one mg-b-20">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+
+                                    <div class="item-icon bg-light-blue ">
+                                        {% block header %}
+                                            <img src="{{ asset('fonts/student.png') }}" >
+                                        {% endblock  %}
+                                    </div>
+
+                                </div>
+                                <div class="col-6">
+                                    <div class="item-content">
+                                        <div class="item-title">Absences this Year</div>
+                                        <div class="item-number"><span class="counter" data-num="{{ nb }}">{{ nb }}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="dashboard-summery-oneT mg-b-20">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <div class="item-icon bg-light-blue">
+                                        <img src="{{ asset('fonts/teacher.png') }}">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+        </div>
+
+        <!-- Student Table Area End Here -->
+        <footer class="footer-wrap-layout1">
+            <div class="copyright">© Copyrights <a href="#">SparkIT</a> 2020. All rights reserved</div>
+        </footer>
+    </div>
+{% endblock body %}

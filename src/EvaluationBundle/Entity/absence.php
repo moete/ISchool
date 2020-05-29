@@ -27,30 +27,113 @@ class absence
     private $id;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="dateabsence", type="datetime")
+     * @ORM\Column(name="heure_deb", type="string", length=255)
      */
-    private $dateabsence;
+    private $heureDeb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="heure_fin", type="string", length=255)
+     */
+    private $heureFin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jour", type="string", length=255)
+     */
+    private $jour;
+
+    /**
+     * @return string
+     */
+    public function getHeureDeb()
+    {
+        return $this->heureDeb;
+    }
+
+    /**
+     * @param string $heureDeb
+     */
+    public function setHeureDeb($heureDeb)
+    {
+        $this->heureDeb = $heureDeb;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHeureFin()
+    {
+        return $this->heureFin;
+    }
+
+    /**
+     * @param string $heureFin
+     */
+    public function setHeureFin($heureFin)
+    {
+        $this->heureFin = $heureFin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getJour()
+    {
+        return $this->jour;
+    }
+
+    /**
+     * @param string $jour
+     */
+    public function setJour($jour)
+    {
+        $this->jour = $jour;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStudent()
+    {
+        return $this->student;
+    }
+
+    /**
+     * @param string $student
+     */
+    public function setStudent($student)
+    {
+        $this->student = $student;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClasses()
+    {
+        return $this->classes;
+    }
+
+    /**
+     * @param mixed $classes
+     */
+    public function setClasses($classes)
+    {
+        $this->classes = $classes;
+    }
 
     /**
      * @var string
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="id_studentt",referencedColumnName="id")
-     * @ORM\Column(name="student", type="string", length=255, nullable=true)
      */
     private $student;
 
-    /**
-     * Many Users have Many Groups.
-     * @ManyToMany(targetEntity="Classe",inversedBy="Matiere")
-     * @JoinTable(name="abscence_byClasse",
-     *      joinColumns={@JoinColumn(name="abscence_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="class_id", referencedColumnName="id")}
-     *      )
-     */
-
-    private $classes;
     /**
      * Get id
      *
@@ -61,28 +144,6 @@ class absence
         return $this->id;
     }
 
-    /**
-     * Set dateabsence
-     *
-     * @param \DateTime $dateabsence
-     *
-     * @return absence
-     */
-    public function setDateabsence($dateabsence)
-    {
-        $this->dateabsence = $dateabsence;
 
-        return $this;
-    }
-
-    /**
-     * Get dateabsence
-     *
-     * @return \DateTime
-     */
-    public function getDateabsence()
-    {
-        return $this->dateabsence;
-    }
 }
 

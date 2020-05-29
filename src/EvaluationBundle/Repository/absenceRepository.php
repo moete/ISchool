@@ -2,6 +2,9 @@
 
 namespace EvaluationBundle\Repository;
 
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
+
 /**
  * absenceRepository
  *
@@ -10,4 +13,17 @@ namespace EvaluationBundle\Repository;
  */
 class absenceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function countAbsence($id)
+    {
+        try {
+            return $this->createQueryBuilder('l')
+                ->select('COUNT(l)')
+                ->where('l.student = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
 }
