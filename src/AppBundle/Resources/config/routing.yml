@@ -4,3 +4,12 @@ add:
 redirect:
     path:    /home
     defaults: { _controller: AppBundle:Security:redirect }
+etudiant_home:
+    path:     etudiant/home
+    defaults: { _controller: AppBundle:Security:showEtudiant }
+professeur_home:
+    path:     professeur/home
+    defaults: { _controller: AppBundle:Security:showProfesseur }
+
+
+

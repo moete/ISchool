@@ -10,4 +10,8 @@ namespace EvaluationBundle\Repository;
  */
 class noteRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function bestNote()
+    {
+        return $this->getEntityManager()->createQuery('SELECT note n from EvaluationBundle:note where n.noteexamen > 15')->getResult();
+    }
 }

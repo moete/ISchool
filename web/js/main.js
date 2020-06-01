@@ -404,7 +404,7 @@
           right: 'prev,next',
         },
         fixedWeekCount: false,
-        navLinks: true, // can click day/week names to navigate views
+        navLinks: true, // can click day/week names to navigate view
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         aspectRatio: 1.8,

@@ -30,7 +30,7 @@ class NoteType extends AbstractType
             'attr' => ['class' => 'btn-fill-lg btn-gradient-yellow btn-hover-bluedark'],
         ])    ->add('Reset',ResetType::class, [
                 'attr' => ['class' => 'btn-fill-lg bg-blue-dark btn-hover-yellow'],
-            ]);;
+            ]);
     }/**
      * {@inheritdoc}
      */

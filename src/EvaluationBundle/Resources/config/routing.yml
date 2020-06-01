@@ -89,6 +89,12 @@ showAbsence:
 showStudentDetails:
     path:     /showStudentDetails/{id}
     defaults: { _controller: EvaluationBundle:Absent:ShowStudentDetails }
+showTeacherDetailsF:
+    path:     /showTeacherDetailsF/{id}
+    defaults: { _controller: EvaluationBundle:Absent:ShowTeacherDetailsF }
+chart:
+    path:     /stat
+    defaults: { _controller: EvaluationBundle:Note:stat }
 
 
 

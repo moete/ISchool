@@ -20,6 +20,7 @@ class AbsentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $allUsers = $em->getRepository(User::class)->findAll();
         $user = new User();
+
         $form = $this->createForm(TeacherType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,6 +46,9 @@ class AbsentController extends Controller
             $message = (new \Swift_Message('SPARKOOL'))
                 ->setFrom('sparkool.sparkit@gmail.com')
                 ->setTo('moetez.boubakri@esprit.tn');
+            $logoPrinc = $message->embed(\Swift_Image::fromPath('LogoPrinc.png'));
+            $hero = $message->embed(\Swift_Image::fromPath('reminder-hero-graph.png'));
+            $logoFooter = $message->embed(\Swift_Image::fromPath('LogoFooter.png'));
 
             $message->setBody(
                 $this->renderView(
@@ -69,6 +73,7 @@ class AbsentController extends Controller
 
 
     }
+
     public function ShowTeacherAction()
     {
         $var = $this->getDoctrine()->getRepository(User::class)->findBy(array('userType' => "Teacher"));
@@ -78,16 +83,18 @@ class AbsentController extends Controller
             ));
 
     }
-    public function ShowAbsenceAction (Request $request,$id)
+
+    public function ShowAbsenceAction(Request $request, $id)
     {
 
-        $user=$this->getDoctrine()->getRepository(User::class)->find($id);
-        $var = $this->getDoctrine()->getRepository(AbsentType::class)->findBy(array('teacher' => $id));
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $var = $this->getDoctrine()->getRepository(AbsentType::class)->findBy(array('student' => $id));
+
 
 
         return $this->render('@Evaluation/absence/showAbsent.html.twig',
             array(
-                'var' => $var,'user'=>$user
+                'var' => $var, 'user' => $user
             ));
 
     }
@@ -125,10 +132,11 @@ class AbsentController extends Controller
         $allstudents = $this->getDoctrine()->getRepository(User::class)->findBy(
             ['userType' => 'Etudiant']
         );
-        return $this->render('@Evaluation/absence/allstudents.html.twig',array(
-            'students'=>$allstudents
+        return $this->render('@Evaluation/absence/allstudents.html.twig', array(
+            'students' => $allstudents
         ));
     }
+
     public function ShowStudentDetailsAction($id)
     {
 
@@ -136,19 +144,58 @@ class AbsentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $var = $em->getRepository('AppBundle:User')->find($id);
         $nb = $em->getRepository('EvaluationBundle:absence')->countAbsence($id);
-
+        $nb1 = $em->getRepository('EvaluationBundle:absence')->findAb($id);
 
         return $this->render('@Evaluation/absence/showDetailTeacher.html.twig', array(
-            'var' => $var, 'nb' => $nb));
-
+            'var' => $var, 'nb' => $nb, 'nb1' => $nb1));
     }
 
+    //FRONT
+    public function ShowTeacherDetailsFAction($id)
+    {
+
+        $activeuser = $this->getUser()->getId();
+        $em = $this->getDoctrine()->getManager();
+        $var = $em->getRepository('AppBundle:User')->find($id);
+        $userType = $var->getUserType();
+        if ($userType == 'Etudiant') {
+            $ab = $em->getRepository('EvaluationBundle:absence')->findOneBy(array('student' => $id));
+            return $this->render('@Evaluation/absence/Front/showTeacherDetailsF.html.twig', array(
+                'var' => $var, 'ab' => $ab));
+        }
+
+        return $this->redirectToRoute("templatefront_aff");
+    }
+
+    public function UpdateLoginAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $var = new User();
+        $var = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $form = $this->createForm(TeacherType::class, $var);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pwd = $var->getPassword();
+            $pass = password_hash($pwd, PASSWORD_BCRYPT);
+            $var->setPassword($pass);
+
+            $em->persist($var);
+            $em->flush();
+
+            return $this->redirectToRoute('interfaceTeacher', ['id' => $id]);
+        }
+        return $this->render('@Evaluation/absence/Front/udateLogin.html.twig',
+            array('form' => $form->createView()));
 
 
+    }
+    public function InterfaceAction($id)
+    {
 
 
+        return $this->render('@Evaluation/absence/Front/interfaceTeacher.html.twig');
 
-
+    }
 }
-
 

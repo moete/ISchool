@@ -4,7 +4,7 @@
         <!-- Breadcubs Area Start Here -->
 
     <div class="breadcrumbs-area">
-        <h3>Teacher Informations</h3>
+        <h3>Student Informations</h3>
         <ul>
             <li>
                 <a href="index.html">Home</a>
@@ -12,7 +12,7 @@
             <li><a href="">All Students</a></li>
             </li>
 
-          <a href=""><li>  Student Details {{ nb }}</li></a>
+          <a href=""><li>  Student Details {{ var }}</li></a>
         </ul>
     </div>
 
@@ -95,6 +95,12 @@
                                         <div class="item-title">Absences this Year</div>
                                         <div class="item-number"><span class="counter" data-num="{{ nb }}">{{ nb }}</span></div>
                                     </div>
+
+                                        <div class="item-content">
+                                            <div class="item-title">Total Absences in Hours</div>
+                                            <div class="item-number"><span class="counter" data-num="{{ nb1 }}">{{ nb1 }} Hours</span></div>
+                                        </div>
+
                                 </div>
                             </div>
                         </div>

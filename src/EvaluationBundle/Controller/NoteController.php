@@ -5,13 +5,13 @@ namespace EvaluationBundle\Controller;
 
 
 use AppBundle\Entity\User;
-use Cassandra\Type\UserType;
 use EvaluationBundle\Entity\note;
 use EvaluationBundle\Form\NoteType;
 use EvaluationBundle\Form\ParentsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 
 
 /**
@@ -38,6 +38,7 @@ class NoteController extends Controller
         if ($form->isSubmitted() and $form->isValid()) {
             $em->persist($note);
             $em->flush();
+
             return $this->redirectToRoute("AffectMark");
         }
         return $this->render('@Evaluation\notes\AffectMark.html.twig',array('form'=>$form->createView(), 'allNotes'=>$sort));
@@ -108,6 +109,8 @@ class NoteController extends Controller
         $em = $this->getDoctrine()->getManager();
         $allUsers = $em->getRepository(User::class)->findAll();
         $user = new User();
+        $user->setUser($this->get('security.token_storage')->getToken()->getUser());
+        $user->setRoles(array("ROLE_PARENT"));
         $form = $this->createForm(ParentsType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -206,6 +209,34 @@ class NoteController extends Controller
 
             )
         );
+    }
+    public function statAction()
+    {
+        $em= $this->getDoctrine()->getManager();
+        $pieChart = new PieChart();
+        $Tasks =$em->getRepository('EvaluationBundle:Absence')->find('student');
+        $Tasks1 =$em->getRepository('EvaluationBundle:Absence')->findSum();
+
+        $sizeToDo = $Tasks;
+        $sizeDone = $Tasks1;
+
+        $pieChart->getData()->setArrayToDataTable(
+            [['Student ', 'Absent Hours'],
+                ['Student',     $sizeDone],
+
+                ['Hours',  $sizeToDo],
+
+            ]
+        );
+        $pieChart->getOptions()->setTitle('Le nombre d absences');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#16CABD');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+        return $this->render('@Evaluation\notes\stat.html.twig', array('piechart' => $pieChart));
     }
 
 }

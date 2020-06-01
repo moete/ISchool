@@ -26,4 +26,30 @@ class absenceRepository extends \Doctrine\ORM\EntityRepository
         } catch (NonUniqueResultException $e) {
         }
     }
-}
+    public function findAb($id)
+    {
+        try {
+            return $this->createQueryBuilder('l')
+                ->select('SUM( l.heureFin - l.heureDeb)')
+                ->where('l.student = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+    public function findSum()
+    {
+        try {
+            return $this->createQueryBuilder('l')
+                ->select('SUM( l.heureFin - l.heureDeb)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NoResultException $e) {
+        } catch (NonUniqueResultException $e) {
+        }
+    }
+
+    }
+

@@ -28,9 +28,11 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('base.html.twig');
     }
-    public function baseloginAction()
+    public function BaseAction()
     {
         // replace this example code with whatever you need
-        return $this->render('baselogin.html.twig');
+        return $this->render('templatelogin.twig');
     }
+
+
 }

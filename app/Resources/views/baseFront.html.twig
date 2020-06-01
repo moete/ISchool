@@ -111,16 +111,13 @@
                             <li><a href="#"><div>Parent Space</div></a>
                                 <ul>
                                     <li><a href=" {{ path('ajout_front') }} "><div><i class="icon-line2-home"></i>Inscription</div></a></li>
-
                                     <li><a href="{{ path('etudaint_markview') }}"><div><i class="icon-building2"></i>My Child</div></a></li>
                                 </ul>
                             </li>
                             <li><a href="#"><div>Teacher Space</div></a>
                                 <ul>
-
                                     <li><a href="{{ path('updateLogin',{'id':app.user.id })}}"><div><i class="icon-line2-home"></i>Update Login</div></a></li>
-
-
+                                    <li><a href="{{ path('showTeacherDetailsF',{'id':app.user.id })}}"><div><i class="icon-line2-home"></i>Teacher Profile</div></a></li>
                                 </ul>
                             </li>
 

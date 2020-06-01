@@ -127,7 +127,7 @@ class TP_flickr {
 		$public_photo_params = $this->api_param_defaults + array(
 			'method'  => 'flickr.people.getPublicPhotos',
   			'user_id' => $user_id,
-  			'extras'  => 'description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o',
+  			'extras'  => 'description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, view, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o',
   			'per_page'=> $item_count,
   			'page' => 1
 		);
@@ -172,7 +172,7 @@ class TP_flickr {
   			'photoset_id' 	=> $photo_set_id,
   			'per_page'		=> $item_count,
   			'page'    		=> 1,
-  			'extras'		=> 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o'
+  			'extras'		=> 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, view, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o'
 		);
 		
 		//get photo list
@@ -194,7 +194,7 @@ class TP_flickr {
   			'group_id' 	=> $group_id,
   			'per_page'		=> $item_count,
   			'page'    		=> 1,
-  			'extras'		=> 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o'
+  			'extras'		=> 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, view, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o'
 		);
 		
 		//get photo list
@@ -233,7 +233,7 @@ class TP_flickr {
 		$gallery_photo_params = $this->api_param_defaults + array(
 			'method'  => 'flickr.galleries.getPhotos',
   			'gallery_id' => $gallery_id,
-  			'extras'  => 'description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o',
+  			'extras'  => 'description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, view, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o',
   			'per_page'=> $item_count,
   			'page' => 1
 		);

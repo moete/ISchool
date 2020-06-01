@@ -39,8 +39,8 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         try {
             return $this->createQueryBuilder('p')
                 ->select('COUNT(p)')
-                ->where('p.userType = :parent')
-                ->setParameter('parent', 'Parent')
+                ->where('p.userType = :parent')->andwhere('p.enabled = :enabled')
+                ->setParameter('parent', 'Parent')->setParameter('enabled',1)
                 ->getQuery()
                 ->getSingleScalarResult();
         } catch (NoResultException $e) {

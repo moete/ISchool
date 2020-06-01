@@ -25,8 +25,7 @@ class AbsentType extends AbstractType
                 '14'=>'14:00',
             ],
             'required' =>true
-        ])
-            ->add('heureFin',ChoiceType::class,[
+        ])->add('heureFin',ChoiceType::class,[
                 'choices'=>[
                     'Please Select*'=>false,
                     '8'=>'8:00',
@@ -36,17 +35,16 @@ class AbsentType extends AbstractType
                     '14'=>'14:00',
                 ],
                 'required' =>true
-            ])
-            ->add('jour')->add('student')
-            ->add('Save',SubmitType::class , [
+            ])->add('jour')->add('Save',SubmitType::class , [
                 'attr' => ['class' => 'btn-fill-lg btn-gradient-yellow btn-hover-bluedark'],
             ])
             ->add('Reset',ResetType::class, [
                 'attr' => ['class' => 'btn-fill-lg bg-blue-dark btn-hover-yellow']
-            ]);;
-    }/**
-     * {@inheritdoc}
-     */
+            ]);
+    }
+    /**
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

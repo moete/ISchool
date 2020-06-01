@@ -131,6 +131,7 @@ class absence
      * @var string
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="id_studentt",referencedColumnName="id")
+     * @ORM\Column(name="student", type="string", length=255, nullable=true)
      */
     private $student;
 
