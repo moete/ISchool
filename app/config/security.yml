@@ -6,7 +6,7 @@ security:
         ROLE_ADMIN: ROLE_ADMIN
         ROLE_USER:  ROLE_USER
         ROLE_PROFESSEUR : ROLE_PROFESSEUR
-        ROLE_PARENT: ROLE_PARENT
+        ROLE_PARENT : ROLE_PARENT
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username_email
@@ -22,7 +22,8 @@ security:
             form_login:
                 remember_me: true
                 csrf_token_generator: security.csrf.token_manager
-                use_forward: false
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
                 always_use_default_target_path: false
                 default_target_path: /home
             logout:       true
@@ -34,3 +35,4 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+

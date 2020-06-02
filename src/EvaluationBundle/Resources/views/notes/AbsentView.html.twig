@@ -1,0 +1,52 @@
+{% extends 'baseFront.html.twig' %}
+{% block sonia %}
+{% endblock %}
+{% block form %}
+    <a class="nav-link py-3" id="home-moving-tab" data-toggle="tab" href="#home-moving" role="tab" aria-controls="home-moving" aria-selected="true">ABSENCES
+    </a>
+    </li>
+
+    </ul>
+    <div class="tab-content rounded-bottom shadow bg-white py-4 px-5">
+        <div class="tab-pane fade show active" id="home-moving" role="tabpanel" aria-labelledby="home-moving-tab">
+
+
+            <div class="form-result"></div>
+            <table class="table" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Heure début</th>
+                    <th>Heure Fin</th>
+                    <th>Jour</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for m in mark %}
+                    {% if m.student == app.user.username %}
+                        <tr>
+                            <td><a href="#">{{ m.heureDeb}}</a></td>
+                            <td><a href="#">{{ m.heureFin}}</a></td>
+                            <td>{{ m.jour }}</td>
+
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    </div>
+    <div class="col-lg-5 d-none d-lg-flex flex-wrap justify-content-center">
+        <img src="{{ asset('FrontEnd/img/ed2.png')}}" alt="Image 1" class="d-flex align-self-end ml-5 mt-3">
+
+    </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+{% endblock %}

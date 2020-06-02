@@ -26,6 +26,28 @@ class Classe
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbetudiants", type="integer")
+     */
+    private $nbetudiants;
+
+    /**
+     * @return int
+     */
+    public function getNbetudiants()
+    {
+        return $this->nbetudiants;
+    }
+
+    /**
+     * @param int $nbetudiants
+     */
+    public function setNbetudiants($nbetudiants)
+    {
+        $this->nbetudiants = $nbetudiants;
+    }
 
     /**
      * @var string
@@ -99,6 +121,8 @@ class Classe
     public function __toString(){
         return $this->nom;
     }
+
+
 
 
 

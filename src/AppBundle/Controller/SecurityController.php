@@ -15,6 +15,10 @@ class SecurityController extends Controller
     {
         return $this->render('AppBundle:Security:admin_home.html.twig');
     }
+    public function showParent()
+    {
+        return$this->render('AppBundle:Security:user_home.html.twig');
+    }
 
     /**
      * @Route("/home")
@@ -32,8 +36,18 @@ class SecurityController extends Controller
         {
             return $this->render('@App/Security/user_home.html.twig');
         }
+        elseif ($this->get('security.authorization_checker')->isGranted('ROLE_PROFESSEUR'))
+        {
+            return $this->render('@App/Security/admin_home.html.twig');
+
+        }
+        elseif ($this->get('security.authorization_checker')->isGranted('ROLE_PARENT'))
+        {
+            return $this->render('parents_home');
+
+        }
         else
-            return $this->render('@FOSUser/Security/login.html.twig');
+            return $this->render('@FOSUser/Security/user_home.html.twig');
 
 
     }

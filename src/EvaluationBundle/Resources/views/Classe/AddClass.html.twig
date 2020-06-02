@@ -23,7 +23,17 @@
                             {{ form_start(form) }}
                             {{ form_row(form._token) }}
                             <div class="row">
-
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Nombre par Classe</label>
+                                    {% if form_errors(form.nom)|length <= 0 %}
+                                        {{ form_widget (form.nbetudiants , {'attr': {'class':'form-control'}}) }}
+                                    {% else %}
+                                        {{ form_widget (form.nbetudiants , {'attr': {'class':'form-control is-invalid'}}) }}
+                                        <div class="invalid-feedback">
+                                            {{ form_errors(form.nbetudiants) }}
+                                        </div>
+                                    {% endif %}
+                                </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Class Name</label>
                                     {% if form_errors(form.nom)|length <= 0 %}

@@ -37,6 +37,10 @@ AffectMark:
 etudaint_markview :
     path:     /marksview
     defaults: { _controller: EvaluationBundle:Note:marksView}
+absentview :
+    path:     /absentView
+    defaults: { _controller: EvaluationBundle:Note:absentView}
+
 etudaint_getmyforum :
     path:     /mysubjects
     defaults: { _controller: EtudiantBundle:Matiere:getmyForumSub}

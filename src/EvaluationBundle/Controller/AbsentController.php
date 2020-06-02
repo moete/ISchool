@@ -20,6 +20,8 @@ class AbsentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $allUsers = $em->getRepository(User::class)->findAll();
         $user = new User();
+        $user->setUser($this->get('security.token_storage')->getToken()->getUser());
+        $user->setRoles(array("ROLE_PROFESSEUR"));
 
         $form = $this->createForm(TeacherType::class, $user);
         $form->handleRequest($request);
@@ -38,35 +40,14 @@ class AbsentController extends Controller
             $user->setFirstName($firstName);
             $user->setLastName($lastName);
             $user->setUserType("Teacher");
+            $email = $user->getEmail();
+
+
             $em->persist($user);
             $em->flush();
+
             return $this->redirectToRoute("addTeacher");
-            /********/
-            $email = $user->getEmail();
-            $message = (new \Swift_Message('SPARKOOL'))
-                ->setFrom('sparkool.sparkit@gmail.com')
-                ->setTo('moetez.boubakri@esprit.tn');
-            $logoPrinc = $message->embed(\Swift_Image::fromPath('LogoPrinc.png'));
-            $hero = $message->embed(\Swift_Image::fromPath('reminder-hero-graph.png'));
-            $logoFooter = $message->embed(\Swift_Image::fromPath('LogoFooter.png'));
 
-            $message->setBody(
-                $this->renderView(
-                    '@Evaluation/absence/mail.html.twig',
-                    array('name' => $firstName,
-                        'lname' => $lastName,
-                        'username' => $username,
-                        'pwd' => $id
-
-                    )
-                ),
-                'text/html'
-            );
-
-            $this->get('mailer')->send($message);
-
-
-            /**********/
 
         }
         return $this->render('@Evaluation/absence/addTeacher.html.twig', array('form' => $form->createView(), 'allUsers' => $allUsers));
@@ -89,12 +70,10 @@ class AbsentController extends Controller
 
         $user = $this->getDoctrine()->getRepository(User::class)->find($id);
         $var = $this->getDoctrine()->getRepository(AbsentType::class)->findBy(array('student' => $id));
-
-
-
+        $nb = $this->getDoctrine()->getRepository('EvaluationBundle:AbsentType')->countAbsence($id);
         return $this->render('@Evaluation/absence/showAbsent.html.twig',
             array(
-                'var' => $var, 'user' => $user
+                'var' => $var, 'user' => $user , 'nb' => $nb
             ));
 
     }
@@ -146,7 +125,7 @@ class AbsentController extends Controller
         $nb = $em->getRepository('EvaluationBundle:absence')->countAbsence($id);
         $nb1 = $em->getRepository('EvaluationBundle:absence')->findAb($id);
 
-        return $this->render('@Evaluation/absence/showDetailTeacher.html.twig', array(
+        return $this->render('@Evaluation/absence/showDetailStudent.html.twig', array(
             'var' => $var, 'nb' => $nb, 'nb1' => $nb1));
     }
 
@@ -167,29 +146,6 @@ class AbsentController extends Controller
         return $this->redirectToRoute("templatefront_aff");
     }
 
-    public function UpdateLoginAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $var = new User();
-        $var = $this->getDoctrine()->getRepository(User::class)->find($id);
-        $form = $this->createForm(TeacherType::class, $var);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $pwd = $var->getPassword();
-            $pass = password_hash($pwd, PASSWORD_BCRYPT);
-            $var->setPassword($pass);
-
-            $em->persist($var);
-            $em->flush();
-
-            return $this->redirectToRoute('interfaceTeacher', ['id' => $id]);
-        }
-        return $this->render('@Evaluation/absence/Front/udateLogin.html.twig',
-            array('form' => $form->createView()));
-
-
-    }
     public function InterfaceAction($id)
     {
 

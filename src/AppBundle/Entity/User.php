@@ -50,7 +50,27 @@ class User extends BaseUser
     {
         $this->id = $id;
     }
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="Users" )
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
 
+    public $User = null ;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->User;
+    }
+    /**
+     * @param mixed $User
+     */
+    public function setUser($User)
+    {
+        $this->User = $User;
+    }
 
     /**
      * @var string
@@ -148,6 +168,7 @@ class User extends BaseUser
 public function __construct()
 {
 parent::__construct();
+$this->User=null;
 // your own logic
 }
 }

@@ -21,7 +21,7 @@ class ClasseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom',ChoiceType::class,array('choices'=>array('3A'=>'3A','3B'=>'3B',' 4 TWIN'=>'4 TWIN','2A'=>'2A')))->add('Add',SubmitType::class , [
+        $builder->add('nbetudiants')->add('nom',ChoiceType::class,array('choices'=>array('3A'=>'3A','3B'=>'3B',' 4 TWIN'=>'4 TWIN','2A'=>'2A')))->add('Add',SubmitType::class , [
             'attr' => ['class' => 'btn-fill-lg btn-gradient-yellow btn-hover-bluedark'],
         ])
 

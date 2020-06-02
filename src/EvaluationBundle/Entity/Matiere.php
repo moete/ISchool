@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="matiere")
  * @ORM\Entity(repositoryClass="EvaluationBundle\Repository\matiereRepository")
+ * @UniqueEntity("nom",message="This Subject is already Added")
  */
 class Matiere
 {
