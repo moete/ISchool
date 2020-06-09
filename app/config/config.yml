@@ -109,3 +109,21 @@ knp_snappy:
         options:    []
     temporary_folder: %kernel.cache_dir%/snappy
 
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button_count"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager mes notes  avec vous"
+            text:           "Tweet"
+            via:            "L'Equipe ISCHOOL.fr"
+            tag:            "Marks"
+
+    theme:                  'default' # optional

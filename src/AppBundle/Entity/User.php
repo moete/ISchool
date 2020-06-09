@@ -91,6 +91,7 @@ class User extends BaseUser
      * @Assert\Choice({"Administrator" ,"Responsable Etudiant", "Responsable enseignant","Responsable parent","User","Etudiant","Teacher"},message="Please Select a valid User Type")
      */
     private $userType;
+
     /**
      * Set firstName
      *
@@ -161,14 +162,33 @@ class User extends BaseUser
     {
         return $this->userType;
     }
+    /**
+     * @see UserInterface
+     */
+protected $roles;
 
+    /**
+     * @return mixed
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param mixed $roles
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+    }
 
 
 
 public function __construct()
 {
 parent::__construct();
-$this->User=null;
+
 // your own logic
 }
 }

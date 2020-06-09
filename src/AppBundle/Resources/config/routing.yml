@@ -7,6 +7,10 @@ redirect:
 parents_home:
     path:     users/home
     defaults: { _controller: AppBundle:Security:showParent }
+parent:
+    path:    /parent
+    defaults: { _controller: AppBundle:Security:parent }
+
 
 
 

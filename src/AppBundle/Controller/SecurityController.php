@@ -21,6 +21,18 @@ class SecurityController extends Controller
     }
 
     /**
+     * @Route("/parent")
+     */
+    public function parentAction()
+    {
+        if($this->get(('security_authorization_checker')->isGranted('ROLE_PARENT')))
+        {
+            return $this->render('@App/Security/admin_home.html.twig');
+
+        }
+    }
+
+    /**
      * @Route("/home")
      */
     public function redirectAction()
@@ -36,14 +48,10 @@ class SecurityController extends Controller
         {
             return $this->render('@App/Security/user_home.html.twig');
         }
-        elseif ($this->get('security.authorization_checker')->isGranted('ROLE_PROFESSEUR'))
-        {
-            return $this->render('@App/Security/admin_home.html.twig');
 
-        }
         elseif ($this->get('security.authorization_checker')->isGranted('ROLE_PARENT'))
         {
-            return $this->render('parents_home');
+            return $this->render('parent');
 
         }
         else

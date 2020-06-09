@@ -176,6 +176,58 @@
                     </script>
 
 
+
+                    <div id="entitiesNav" class="offers_grid">
+
+                        <!-- Offers Item -->
+
+                        <div class="offers_item rating_4">
+                            <div class="row">
+                                <div class="col-lg-1 temp_col"></div>
+                                <div class="col-lg-3 col-1680-4">
+                                    <div class="offers_image_container">
+
+                                        <div class="offers_image_background"  style="background-image">
+                                            <img  width="200px" height="200px" src="{{asset('uploads/Esp/'~espece.image) }}" alt="JABOT">
+                                        </div>
+
+                                        <div class="offer_name"><a href="{{path('espece_map') }}">{{ espece.lieu }}</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="offers_content">
+                                        <div class="offers_price">
+                                            {{ espece.nom }}
+                                            {{ twitterButton() }}
+                                            {{ pinterestButton() }}
+                                            {{ facebookButton()}}
+
+                                        </div>
+
+
+
+                                        <div class=""><a href="single_listing.html">{{ espece.type }}</a></div>
+
+                                        <p class="offers_text">
+                                            {{ espece.description }}
+                                        </p>
+
+                                        <div class="offer_reviews">
+                                            <div class="offer_reviews_content">
+                                                <div class="offer_reviews_title">very good</div>
+                                                <div class="offer_reviews_subtitle">100 reviews</div>
+                                            </div>
+                                            <div class="offer_reviews_rating text-center">8.1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
                     <div class="table-responsive">
                         <table class="table display data-table text-nowrap">
                             <thead>
